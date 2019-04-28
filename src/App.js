@@ -1,33 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
-import LifecycleSample from './LifecycleSample';
-import IterationSample from './IterationSample';
-
-function getRandomColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
+import styles from './App.scss';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
 class App extends Component {
-  state = {
-    color: '#000000'
-  }
-
-  handleClick = () => {
-    this.setState({
-      color: getRandomColor()
-    })
-  }
-
   render() {
+    const isBlue = true;
     return (
-      <div>
-        <IterationSample></IterationSample>
-        <button onClick={this.handleClick}>랜덤색상</button>
-        <LifecycleSample color={this.state.color}></LifecycleSample>
+      <div className={cx('box', { blue: isBlue })}>
+        <div className={cx('box-inside')}></div>
       </div>
     )
   }
 }
 
 export default App;
-
